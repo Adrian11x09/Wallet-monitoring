@@ -33,6 +33,15 @@ Web3多链钱包监控专门用于监控多个区块链网络上的钱包代币�
 
 ## 🚀 使用指南
 
+下载
+
+![img_v3_02nu_e29b3167-6b78-4eb1-9fab-0cd57b569f2g](https://github.com/user-attachments/assets/8e86a9a6-16af-49a1-b7ac-2150d1a91c7f)
+
+![img_v3_02nu_c1c9f3ee-49a4-4208-95c8-0ce2be5c730g](https://github.com/user-attachments/assets/a7366434-8c8d-40c6-8cdd-682be36c8aa2)
+
+![image](https://github.com/user-attachments/assets/f7753435-5b0e-4872-8cde-61265bcb647a)
+
+![image](https://github.com/user-attachments/assets/b22d1574-5431-4806-a472-64d4689c5c4c)
 
 
 ---
